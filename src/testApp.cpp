@@ -218,7 +218,7 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 					{
 						for (int j = 0; j < _countof(joints); ++j)
 						{
-							jointPoints[j] = BodyToScreen(joints[j].Position, 1024, 768);
+							jointPoints[j] = BodyToScreen(joints[j].Position, 1920, 1080);
 						}
 
 						lastChestPosition = jointPoints[JointType_Neck];
@@ -434,7 +434,7 @@ void testApp::draw() {
 
 	ofNoFill();
 	ofSetCircleResolution(180);
-	ofSetColor(255, 0, 0, 50);
+	ofSetColor(255, 102, 159, 255);
 	ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(gravAcc));
 	ofSetColor(0, 0, 180, 255);
 
@@ -458,13 +458,14 @@ void testApp::draw() {
 	}
 
 	//Update rotation accelerator by hand distance
-	if (lastHandPositionRight.x - lastHandPositionLeft.x >= 300) {
-		if (lastHandPositionRight.x - lastHandPositionLeft.x <= 500) {
-			if (gravAcc > 1.1)
-				gravAcc /= 1.04;
-		}else {
-			gravAcc *= 1.04;
-		}
+
+	if (lastHandPositionRight.x - lastHandPositionLeft.x >= 800) {
+		gravAcc *= 1.04;
+	}
+	else if ((lastHandPositionRight.x - lastHandPositionLeft.x <= 400) && 
+		(lastHandPositionRight.x - lastHandPositionLeft.x >= 200)) {
+		if (gravAcc > 1.1)
+			gravAcc /= 1.04;
 	}
 	
 
