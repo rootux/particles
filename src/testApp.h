@@ -13,7 +13,7 @@ public:
 	void update();
 	void draw();
 
-	void                    ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies);
+	void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies);
 	ofVec2f testApp::BodyToScreen(const CameraSpacePoint& bodyPoint, int width, int height);
 	void testApp::DrawBody(const Joint* pJoints, const ofVec2f* pJointPoints);
 	void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointType joint0, JointType joint1);
@@ -31,6 +31,7 @@ public:
 	DWORD                   m_nFramesSinceUpdate;
 
 	ofVec2f		lastHandPosition;
+	ofVec2f		lastChestPosition;
 
 	void keyPressed(int key);
 	void keyReleased(int key);

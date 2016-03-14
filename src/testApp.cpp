@@ -220,6 +220,8 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 							jointPoints[j] = BodyToScreen(joints[j].Position, 1024, 768);
 						}
 
+						lastChestPosition = jointPoints[JointType_Neck];
+						
 						DrawBody(joints, jointPoints);
 
 						DrawHand(leftHandState, jointPoints[JointType_HandLeft]);
@@ -262,6 +264,8 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 
 
 }
+
+
 
 /// <summary>
 /// Converts a body point to screen space
@@ -379,6 +383,7 @@ void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointT
 	}
 }
 
+
 /// <summary>
 /// Draws a hand symbol if the hand is tracked: red circle = closed, green circle = opened; blue circle = lasso
 /// </summary>
@@ -386,7 +391,6 @@ void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointT
 /// <param name="handPosition">position of the hand</param>
 void testApp::DrawHand(HandState handState, const ofVec2f& handPosition)
 {
-
 	lastHandPosition = handPosition;
 	switch (handState)
 	{
@@ -445,8 +449,8 @@ void testApp::draw() {
 	
 	ofSetLineWidth(8.0);
 	ofSetColor(101, 66, 138, 255);
-	if (lastHandPosition.x > 0 && lastHandPosition.y > 0) {
-		ofCircle(lastHandPosition.x, lastHandPosition.y, 60);
+	if (lastChestPosition.x > 0 && lastChestPosition.y > 0) {
+		ofCircle(lastChestPosition.x, lastChestPosition.y, 60);
 	}
 	ofSetLineWidth(2.0);
 
