@@ -154,7 +154,8 @@ void testApp::update() {
 		}
 
 	float dt = min(ofGetLastFrameTime(), 1.0 / 10.0);
-	particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 10.0, false);
+	particleSystem.gravitateTo(lastChestPosition, gravAcc, 1, 10.0, false);
+	//particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 10.0, false);
 	particleSystem.rotateAround(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), rotAcc, 10.0, false);
 	particleSystem.applyVectorField(vectorField.getPixels(), vectorField.getWidth(), vectorField.getHeight(), vectorField.getNumChannels(), ofGetWindowRect(), fieldMult);
 	if (ofGetMousePressed(2)) {
@@ -224,8 +225,11 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 						
 						DrawBody(joints, jointPoints);
 
-						DrawHand(leftHandState, jointPoints[JointType_HandLeft]);
-						DrawHand(rightHandState, jointPoints[JointType_HandRight]);
+						lastHandPositionLeft = jointPoints[JointType_HandLeft];
+						lastHandPositionRight = jointPoints[JointType_HandRight];
+
+						//DrawHand(leftHandState, jointPoints[JointType_HandLeft]);
+						//DrawHand(rightHandState, jointPoints[JointType_HandRight]);
 					}
 				}
 			}
@@ -391,7 +395,7 @@ void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointT
 /// <param name="handPosition">position of the hand</param>
 void testApp::DrawHand(HandState handState, const ofVec2f& handPosition)
 {
-	lastHandPosition = handPosition;
+	//lastHandPosition = handPosition;
 	switch (handState)
 	{
 	case HandState_Closed:
@@ -432,7 +436,7 @@ void testApp::draw() {
 	ofSetCircleResolution(180);
 	ofSetColor(255, 0, 0, 50);
 	ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(gravAcc));
-	ofSetColor(0, 0, 255, 50);
+	ofSetColor(0, 0, 180, 255);
 
 	ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(rotAcc));
 
@@ -452,6 +456,18 @@ void testApp::draw() {
 	if (lastChestPosition.x > 0 && lastChestPosition.y > 0) {
 		ofCircle(lastChestPosition.x, lastChestPosition.y, 60);
 	}
+
+	//Update rotation accelerator by hand distance
+	if (lastHandPositionRight.x - lastHandPositionLeft.x >= 300) {
+		if (lastHandPositionRight.x - lastHandPositionLeft.x <= 500) {
+			if (gravAcc > 1.1)
+				gravAcc /= 1.04;
+		}else {
+			gravAcc *= 1.04;
+		}
+	}
+	
+
 	ofSetLineWidth(2.0);
 
 	ofSetColor(255, 255, 255);

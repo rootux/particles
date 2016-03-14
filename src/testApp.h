@@ -30,7 +30,8 @@ public:
 	INT64                   m_nNextStatusTime;
 	DWORD                   m_nFramesSinceUpdate;
 
-	ofVec2f		lastHandPosition;
+	ofVec2f		lastHandPositionLeft;
+	ofVec2f		lastHandPositionRight;
 	ofVec2f		lastChestPosition;
 
 	void keyPressed(int key);
