@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>particles</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="..\..\..\addons\ofxKinectForWindows2\ofxKinectForWindows2.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="..\..\..\addons\ofxKinectForWindows2\ofxKinectForWindows2.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="..\..\..\addons\ofxKinectForWindows2\ofxKinectForWindows2.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="..\..\..\addons\ofxKinectForWindows2\ofxKinectForWindows2.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFlowTools\src;..\..\..\addons\ofxFlowTools\src\drawforces;..\..\..\addons\ofxFlowTools\src\filters;..\..\..\addons\ofxFlowTools\src\fluid;..\..\..\addons\ofxFlowTools\src\mask;..\..\..\addons\ofxFlowTools\src\opticalflow;..\..\..\addons\ofxFlowTools\src\particles;..\..\..\addons\ofxFlowTools\src\tools;..\..\..\addons\ofxFlowTools\src\visualisation;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxParticles\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFlowTools\src;..\..\..\addons\ofxFlowTools\src\drawforces;..\..\..\addons\ofxFlowTools\src\filters;..\..\..\addons\ofxFlowTools\src\fluid;..\..\..\addons\ofxFlowTools\src\mask;..\..\..\addons\ofxFlowTools\src\opticalflow;..\..\..\addons\ofxFlowTools\src\particles;..\..\..\addons\ofxFlowTools\src\tools;..\..\..\addons\ofxFlowTools\src\visualisation;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxParticles\src;$(KINECTSDK20_DIR)\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);kinect20.lib;src\libusb\lib\vs\x64\Debug\dll\libusb-1.0.lib;C:\of_v0.9.2\apps\myApps\visionquest\bin\ofxKinectForWindows2Lib.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OF_ROOT)\libs\glut\lib\vs\x64;$(OF_ROOT)\libs\glfw\lib\vs\x64;$(OF_ROOT)\libs\rtAudio\lib\vs\x64;$(OF_ROOT)\libs\FreeImage\lib\vs\x64;$(OF_ROOT)\libs\freetype\lib\vs\x64;$(OF_ROOT)\libs\fmodex\lib\vs\x64;$(OF_ROOT)\libs\videoInput\lib\vs\x64;$(OF_ROOT)\libs\cairo\lib\vs\x64;$(OF_ROOT)\libs\glew\lib\vs\x64;$(OF_ROOT)\libs\glu\lib\vs\x64;$(OF_ROOT)\libs\openssl\lib\vs\x64;$(OF_ROOT)\libs\Poco\lib\vs\x64;$(OF_ROOT)\libs\tess2\lib\vs\x64;$(OF_ROOT)\libs\boost\lib\vs\x64;%(AdditionalLibraryDirectories);$(KINECTSDK20_DIR)Lib\x64\</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFlowTools\src;..\..\..\addons\ofxFlowTools\src\drawforces;..\..\..\addons\ofxFlowTools\src\filters;..\..\..\addons\ofxFlowTools\src\fluid;..\..\..\addons\ofxFlowTools\src\mask;..\..\..\addons\ofxFlowTools\src\opticalflow;..\..\..\addons\ofxFlowTools\src\particles;..\..\..\addons\ofxFlowTools\src\tools;..\..\..\addons\ofxFlowTools\src\visualisation;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxParticles\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxFlowTools\src;..\..\..\addons\ofxFlowTools\src\drawforces;..\..\..\addons\ofxFlowTools\src\filters;..\..\..\addons\ofxFlowTools\src\fluid;..\..\..\addons\ofxFlowTools\src\mask;..\..\..\addons\ofxFlowTools\src\opticalflow;..\..\..\addons\ofxFlowTools\src\particles;..\..\..\addons\ofxFlowTools\src\tools;..\..\..\addons\ofxFlowTools\src\visualisation;..\..\..\addons\ofxKinectForWindows2\src;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data;..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source;..\..\..\addons\ofxParticles\src;$(KINECTSDK20_DIR)\inc</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies);src\libusb\lib\vs\x64\Release\dll\libusb-1.0.lib;C:\of_v0.9.2\apps\myApps\visionquest\bin\ofxKinectForWindows2Lib.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OF_ROOT)\libs\glut\lib\vs\x64;$(OF_ROOT)\libs\glfw\lib\vs\x64;$(OF_ROOT)\libs\rtAudio\lib\vs\x64;$(OF_ROOT)\libs\FreeImage\lib\vs\x64;$(OF_ROOT)\libs\freetype\lib\vs\x64;$(OF_ROOT)\libs\fmodex\lib\vs\x64;$(OF_ROOT)\libs\videoInput\lib\vs\x64;$(OF_ROOT)\libs\cairo\lib\vs\x64;$(OF_ROOT)\libs\glew\lib\vs\x64;$(OF_ROOT)\libs\glu\lib\vs\x64;$(OF_ROOT)\libs\openssl\lib\vs\x64;$(OF_ROOT)\libs\Poco\lib\vs\x64;$(OF_ROOT)\libs\tess2\lib\vs\x64;$(OF_ROOT)\libs\boost\lib\vs\x64;%(AdditionalLibraryDirectories);$(KINECTSDK20_DIR)Lib\x64\;$(KINECTSDK20_DIR)Lib\x86\</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\testApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForce.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\fluid\ftFluidSimulation.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMask.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlow.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\particles\ftParticleFlow.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\tools\ftAverageVelocity.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\libusb\libusb.h" />
+    <ClInclude Include="src\testApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForce.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForceShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftContrastShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftDecayShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftEOGShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftGaussianBlurShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftHSLShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftLuminanceShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftTimeBlurShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftAdvectShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftDiffuseShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftDivergenceShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftFluidSimulation.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftJacobiShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftSmokeBuoyancyShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftSubstractGradientShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftVorticityFirstPassShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftVorticitySecondPassShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftFbo.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftSwapBuffer.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftSwapFbo.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMask.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMaskShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ofxFlowTools.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlow.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlowShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftAgeLifespanMassSizeParticleShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftDrawParticleShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftInitPositionShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftMoveParticleShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftParticleFlow.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftAddForceShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftAverageVelocity.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftClampLengthShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftDensityFloatMultiplier.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftDensityVec2Multiplier.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftRedToLuminanceShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftToScalar.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftToScalarShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftDisplayScalar.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftDisplayScalarShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftPressureField.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftPressureFieldShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftTemperatureField.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftTemperatureFieldShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocityField.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocityFieldShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocitySpheres.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocitySpheresShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVTField.h" />
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVTFieldShader.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h" />
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h" />
+    <ClInclude Include="..\..\..\addons\ofxParticles\src\ofxParticles.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="icon.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

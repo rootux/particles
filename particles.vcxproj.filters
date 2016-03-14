@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForce.cpp">
+      <Filter>addons\ofxFlowTools\src\drawforces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.cpp">
+      <Filter>addons\ofxFlowTools\src\drawforces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\fluid\ftFluidSimulation.cpp">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMask.cpp">
+      <Filter>addons\ofxFlowTools\src\mask</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlow.cpp">
+      <Filter>addons\ofxFlowTools\src\opticalflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\particles\ftParticleFlow.cpp">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxFlowTools\src\tools\ftAverageVelocity.cpp">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfraRed.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.cpp">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools">
+      <UniqueIdentifier>{E3FAE6F6-71F6-CBB7-2E80-023F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src">
+      <UniqueIdentifier>{916B8527-E558-6965-F3FB-AA1A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\drawforces">
+      <UniqueIdentifier>{047DE384-A528-9AFA-14B9-8DA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\filters">
+      <UniqueIdentifier>{96DC2D39-D002-D6D4-6550-49C3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\fluid">
+      <UniqueIdentifier>{4BBB4B0F-9306-2810-CA22-896E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\mask">
+      <UniqueIdentifier>{A8447F72-E1E3-8D59-6B3E-943C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\opticalflow">
+      <UniqueIdentifier>{8CA1FFBA-23CF-B510-0B5D-CCCC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\particles">
+      <UniqueIdentifier>{F0DE08D0-55E6-4D80-D624-5051}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\tools">
+      <UniqueIdentifier>{82A4B1C5-C550-7BF0-3C84-4E1B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxFlowTools\src\visualisation">
+      <UniqueIdentifier>{85382400-3D16-D03D-D76C-D95A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2">
+      <UniqueIdentifier>{79EE9CEE-5877-E1B3-C373-D5C8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src">
+      <UniqueIdentifier>{BBA641E3-A9C6-8646-2A06-7A9D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2">
+      <UniqueIdentifier>{849A6419-451E-EB51-E82D-5D04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data">
+      <UniqueIdentifier>{D3FA8E7E-7250-B64E-BCC8-522E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source">
+      <UniqueIdentifier>{D8ABF3AE-C83C-4B28-80F0-8B6D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxParticles">
+      <UniqueIdentifier>{0ED252E8-3330-70F0-EB85-B3D9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxParticles\src">
+      <UniqueIdentifier>{8A5D841A-F767-E909-E9D0-4F9E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForce.h">
+      <Filter>addons\ofxFlowTools\src\drawforces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawForceShader.h">
+      <Filter>addons\ofxFlowTools\src\drawforces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\drawforces\ftDrawMouseForces.h">
+      <Filter>addons\ofxFlowTools\src\drawforces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftContrastShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftDecayShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftEOGShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftGaussianBlurShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftHSLShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftLuminanceShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\filters\ftTimeBlurShader.h">
+      <Filter>addons\ofxFlowTools\src\filters</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftAdvectShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftDiffuseShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftDivergenceShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftFluidSimulation.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftJacobiShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftSmokeBuoyancyShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftSubstractGradientShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftVorticityFirstPassShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\fluid\ftVorticitySecondPassShader.h">
+      <Filter>addons\ofxFlowTools\src\fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftFbo.h">
+      <Filter>addons\ofxFlowTools\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftShader.h">
+      <Filter>addons\ofxFlowTools\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftSwapBuffer.h">
+      <Filter>addons\ofxFlowTools\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ftSwapFbo.h">
+      <Filter>addons\ofxFlowTools\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMask.h">
+      <Filter>addons\ofxFlowTools\src\mask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\mask\ftVelocityMaskShader.h">
+      <Filter>addons\ofxFlowTools\src\mask</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\ofxFlowTools.h">
+      <Filter>addons\ofxFlowTools\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlow.h">
+      <Filter>addons\ofxFlowTools\src\opticalflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\opticalflow\ftOpticalFlowShader.h">
+      <Filter>addons\ofxFlowTools\src\opticalflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftAgeLifespanMassSizeParticleShader.h">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftDrawParticleShader.h">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftInitPositionShader.h">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftMoveParticleShader.h">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\particles\ftParticleFlow.h">
+      <Filter>addons\ofxFlowTools\src\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftAddForceShader.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftAverageVelocity.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftClampLengthShader.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftDensityFloatMultiplier.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftDensityVec2Multiplier.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftRedToLuminanceShader.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftToScalar.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\tools\ftToScalarShader.h">
+      <Filter>addons\ofxFlowTools\src\tools</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftDisplayScalar.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftDisplayScalarShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftPressureField.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftPressureFieldShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftTemperatureField.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftTemperatureFieldShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocityField.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocityFieldShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocitySpheres.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVelocitySpheresShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVTField.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxFlowTools\src\visualisation\ftVTFieldShader.h">
+      <Filter>addons\ofxFlowTools\src\visualisation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Body.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data\Joint.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Device.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Base.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BaseImage.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Body.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\BodyIndex.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Color.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Depth.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\Infrared.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source\LongExposureInfrared.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2\Utils.h">
+      <Filter>addons\ofxKinectForWindows2\src\ofxKinectForWindows2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxKinectForWindows2\src\ofxKinectForWindows2.h">
+      <Filter>addons\ofxKinectForWindows2\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxParticles\src\ofxParticles.h">
+      <Filter>addons\ofxParticles\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libusb\libusb.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

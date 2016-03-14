@@ -1,0 +1,3 @@
+ofxFlowTools
+ofxKinectForWindows2
+ofxParticles
