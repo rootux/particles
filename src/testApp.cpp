@@ -49,13 +49,21 @@ void testApp::setup() {
 
 	ofSetFrameRate(60.0);
 	ofBackground(0, 0, 0);
-	mouseEmitter.velSpread = ofVec3f(25.0, 25.0);
-	mouseEmitter.life = 10.0;
-	mouseEmitter.lifeSpread = 5.0;
-	mouseEmitter.numPars = 10;
-	mouseEmitter.color = ofColor(200, 200, 255);
-	mouseEmitter.colorSpread = ofColor(20, 20, 0);
-	mouseEmitter.size = 32;
+	leftHandEmitter.velSpread = ofVec3f(25.0, 25.0);
+	leftHandEmitter.life = 4.0;
+	leftHandEmitter.lifeSpread = 1;
+	leftHandEmitter.numPars = 10;
+	leftHandEmitter.color = ofColor(200, 200, 255);
+	leftHandEmitter.colorSpread = ofColor(20, 20, 0);
+	leftHandEmitter.size = 32;
+
+	rightHandEmitter.velSpread = ofVec3f(25.0, 25.0);
+	rightHandEmitter.life = 4.0;
+	rightHandEmitter.lifeSpread = 1;
+	rightHandEmitter.numPars = 10;
+	rightHandEmitter.color = ofColor(200, 200, 255);
+	rightHandEmitter.colorSpread = ofColor(20, 20, 0);
+	rightHandEmitter.size = 32;
 
 	leftEmitter.setPosition(ofVec3f(0, ofGetHeight() / 3));
 	leftEmitter.setVelocity(ofVec3f(150.0, 0.0));
@@ -158,7 +166,11 @@ void testApp::update() {
 	//particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 10.0, false);
 	particleSystem.rotateAround(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), rotAcc, 10.0, false);
 	particleSystem.applyVectorField(vectorField.getPixels(), vectorField.getWidth(), vectorField.getHeight(), vectorField.getNumChannels(), ofGetWindowRect(), fieldMult);
-	if ((leftHandState == HandState_Closed) && (rightHandState == HandState_Closed)) {
+	if (leftHandState == HandState_Closed) {
+		particleSystem.gravitateTo(ofPoint(lastHandPositionLeft.x, lastHandPositionLeft.y), gravAcc, 1, 10.0, false);
+	}
+
+	if (rightHandState == HandState_Closed) {
 		particleSystem.gravitateTo(ofPoint(lastHandPositionRight.x, lastHandPositionRight.y), gravAcc, 1, 10.0, false);
 	}
 
@@ -169,17 +181,31 @@ void testApp::update() {
 	particleSystem.addParticles(topEmitter);
 	particleSystem.addParticles(botEmitter);
 
-	ofVec2f mouseVel(mouseX - pmouseX, mouseY - pmouseY);
-	mouseVel *= 20.0;
-	if ((leftHandState == HandState_Open) && (rightHandState == HandState_Open)) {
-		mouseEmitter.setPosition(ofVec3f(lastHandPositionLeft.x, lastHandPositionLeft.y), ofVec3f(mouseX, mouseY));
-		mouseEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
-		mouseEmitter.setVelocity(pmouseVel, mouseVel);
-		particleSystem.addParticles(mouseEmitter);
+
+	ofVec2f mouseVelLeft(lastHandPositionLeft.x - pmouseXLeft, lastHandPositionLeft.y - pmouseYLeft);
+	mouseVelLeft *= 20.0;
+	if (leftHandState == HandState_Open) {
+		leftHandEmitter.setPosition(ofVec3f(lastHandPositionLeft.x, lastHandPositionLeft.y), ofVec3f(lastHandPositionLeft.x, lastHandPositionLeft.y));
+		leftHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
+		leftHandEmitter.setVelocity(pmouseVelLeft, mouseVelLeft);
+		particleSystem.addParticles(leftHandEmitter);
 	}
-	pmouseX = mouseX;
-	pmouseY = mouseY;
-	pmouseVel = mouseVel;
+	pmouseXLeft = lastHandPositionLeft.x;
+	pmouseYLeft = lastHandPositionLeft.y;
+	pmouseVelLeft = mouseVelLeft;
+
+
+	ofVec2f mouseVelRight(lastHandPositionRight.x - pmouseXRight, lastHandPositionRight.y - pmouseYRight);
+	mouseVelRight *= 20.0;
+	if (rightHandState == HandState_Open) {
+		rightHandEmitter.setPosition(ofVec3f(lastHandPositionRight.x, lastHandPositionRight.y), ofVec3f(lastHandPositionRight.x, lastHandPositionRight.y));
+		rightHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
+		rightHandEmitter.setVelocity(pmouseVelRight, mouseVelRight);
+		particleSystem.addParticles(rightHandEmitter);
+	}
+	pmouseXRight = lastHandPositionRight.x;
+	pmouseYRight = lastHandPositionRight.y;
+	pmouseVelRight = mouseVelRight;
 }
 
 
@@ -432,12 +458,12 @@ void testApp::draw() {
 	//Update rotation accelerator by hand distance
 
 	if (lastHandPositionRight.x - lastHandPositionLeft.x >= 800) {
-		gravAcc *= 1.04;
+		gravAcc *= 1.03;
 	}
 	else if ((lastHandPositionRight.x - lastHandPositionLeft.x <= 400) && 
 		(lastHandPositionRight.x - lastHandPositionLeft.x >= 200)) {
 		if (gravAcc > 1.1)
-			gravAcc /= 1.04;
+			gravAcc /= 1.03;
 	}
 	
 

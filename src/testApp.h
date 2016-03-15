@@ -46,10 +46,11 @@ public:
 	void gotMessage(ofMessage msg);
 
 	ofxParticleSystem particleSystem;
-	int pmouseX, pmouseY;
-	ofVec2f pmouseVel;
+	int pmouseXLeft, pmouseYLeft;
+	int pmouseXRight, pmouseYRight;
+	ofVec2f pmouseVelLeft, pmouseVelRight;
 
-	ofxParticleEmitter mouseEmitter, topEmitter, botEmitter, leftEmitter, rightEmitter;
+	ofxParticleEmitter leftHandEmitter, rightHandEmitter, topEmitter, botEmitter, leftEmitter, rightEmitter;
 	float rotAcc, gravAcc, fieldMult, drag;
 	ofFloatPixels vectorField;
 
