@@ -17,7 +17,6 @@ public:
 	ofVec2f testApp::BodyToScreen(const CameraSpacePoint& bodyPoint, int width, int height);
 	void testApp::DrawBody(const Joint* pJoints, const ofVec2f* pJointPoints);
 	void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointType joint0, JointType joint1);
-	void testApp::DrawHand(HandState handState, const ofVec2f& handPosition);
 
 	ofxKFW2::Device		kinect;
 	IBodyFrameReader*       m_pBodyFrameReader;
@@ -33,6 +32,8 @@ public:
 	ofVec2f		lastHandPositionLeft;
 	ofVec2f		lastHandPositionRight;
 	ofVec2f		lastChestPosition;
+	HandState   leftHandState;
+	HandState   rightHandState;
 
 	void keyPressed(int key);
 	void keyReleased(int key);

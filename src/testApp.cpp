@@ -158,8 +158,8 @@ void testApp::update() {
 	//particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 10.0, false);
 	particleSystem.rotateAround(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), rotAcc, 10.0, false);
 	particleSystem.applyVectorField(vectorField.getPixels(), vectorField.getWidth(), vectorField.getHeight(), vectorField.getNumChannels(), ofGetWindowRect(), fieldMult);
-	if (ofGetMousePressed(2)) {
-		particleSystem.gravitateTo(ofPoint(mouseX, mouseY), gravAcc, 1, 10.0, false);
+	if ((leftHandState == HandState_Closed) && (rightHandState == HandState_Closed)) {
+		particleSystem.gravitateTo(ofPoint(lastHandPositionRight.x, lastHandPositionRight.y), gravAcc, 1, 10.0, false);
 	}
 
 	particleSystem.update(dt, drag);
@@ -171,8 +171,8 @@ void testApp::update() {
 
 	ofVec2f mouseVel(mouseX - pmouseX, mouseY - pmouseY);
 	mouseVel *= 20.0;
-	if (ofGetMousePressed(0)) {
-		mouseEmitter.setPosition(ofVec3f(pmouseX, pmouseY), ofVec3f(mouseX, mouseY));
+	if ((leftHandState == HandState_Open) && (rightHandState == HandState_Open)) {
+		mouseEmitter.setPosition(ofVec3f(lastHandPositionLeft.x, lastHandPositionLeft.y), ofVec3f(mouseX, mouseY));
 		mouseEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
 		mouseEmitter.setVelocity(pmouseVel, mouseVel);
 		particleSystem.addParticles(mouseEmitter);
@@ -207,8 +207,8 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 				{
 					Joint joints[JointType_Count];
 					ofVec2f jointPoints[JointType_Count];
-					HandState leftHandState = HandState_Unknown;
-					HandState rightHandState = HandState_Unknown;
+					leftHandState = HandState_Unknown;
+					rightHandState = HandState_Unknown;
 
 					pBody->get_HandLeftState(&leftHandState);
 					pBody->get_HandRightState(&rightHandState);
@@ -223,13 +223,11 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 
 						lastChestPosition = jointPoints[JointType_Neck];
 						
-						DrawBody(joints, jointPoints);
+						//DrawBody(joints, jointPoints);
 
 						lastHandPositionLeft = jointPoints[JointType_HandLeft];
 						lastHandPositionRight = jointPoints[JointType_HandRight];
 
-						//DrawHand(leftHandState, jointPoints[JointType_HandLeft]);
-						//DrawHand(rightHandState, jointPoints[JointType_HandRight]);
 					}
 				}
 			}
@@ -388,32 +386,6 @@ void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointT
 }
 
 
-/// <summary>
-/// Draws a hand symbol if the hand is tracked: red circle = closed, green circle = opened; blue circle = lasso
-/// </summary>
-/// <param name="handState">state of the hand</param>
-/// <param name="handPosition">position of the hand</param>
-void testApp::DrawHand(HandState handState, const ofVec2f& handPosition)
-{
-	//lastHandPosition = handPosition;
-	switch (handState)
-	{
-	case HandState_Closed:
-		ofLogNotice("Hand closed " + ofToString(handPosition.x));
-		//m_pRenderTarget->FillEllipse(ellipse, m_pBrushHandClosed);
-		break;
-
-	case HandState_Open:
-		ofLogNotice("Hand opened " + ofToString(handPosition.x));
-		//m_pRenderTarget->FillEllipse(ellipse, m_pBrushHandOpen);
-		break;
-
-	case HandState_Lasso:
-		ofLogNotice("Hand lasso " + ofToString(handPosition.x));
-		//m_pRenderTarget->FillEllipse(ellipse, m_pBrushHandLasso);
-		break;
-	}
-}
 
 //--------------------------------------------------------------
 void testApp::draw() {
