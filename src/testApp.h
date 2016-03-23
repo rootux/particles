@@ -17,6 +17,7 @@ public:
 	ofVec2f testApp::BodyToScreen(const CameraSpacePoint& bodyPoint, int width, int height);
 	void testApp::DrawBody(const Joint* pJoints, const ofVec2f* pJointPoints);
 	void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointType joint0, JointType joint1);
+	void testApp::updateParticleSystem(ofxParticleSystem* ps, ofVec2f gravitationCenter, ofVec2f leftHand, ofVec2f rightHand);
 
 	ofxKFW2::Device		kinect;
 	IBodyFrameReader*       m_pBodyFrameReader;
@@ -29,12 +30,15 @@ public:
 	INT64                   m_nNextStatusTime;
 	DWORD                   m_nFramesSinceUpdate;
 
-	ofVec2f		lastHandPositionLeft;
-	ofVec2f		lastHandPositionRight;
-	ofVec2f		lastChestPosition;
+	ofVec2f		lastHandPositionLeft[BODY_COUNT] = {};
+	ofVec2f		lastHandPositionRight[BODY_COUNT] = {};
+	ofVec2f		lastChestPositions[BODY_COUNT] = {};
+
+	ofVec2f		lastKnownChestPosition[BODY_COUNT] = {};
+
 	HandState   leftHandState;
 	HandState   rightHandState;
-	UINT64		lastBodyTrackingId = NULL;
+	UINT64		lastBodyTrackingIds[BODY_COUNT] = { NULL,NULL,NULL,NULL,NULL,NULL };
 
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -46,13 +50,16 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 
-	ofxParticleSystem particleSystem;
+	ofxParticleSystem particleSystems[BODY_COUNT] = {};
+
 	int pmouseXLeft, pmouseYLeft;
 	int pmouseXRight, pmouseYRight;
 	ofVec2f pmouseVelLeft, pmouseVelRight;
 
 	ofxParticleEmitter leftHandEmitter, rightHandEmitter, topEmitter, botEmitter, leftEmitter, rightEmitter;
+	ofxParticleEmitter secondPersonEmitter;
 	bool isLeftEmitterEnabled, isRightEmitterEnabled, isTopEmitterEnabled, isBottomEmitterEnabled;
+	bool isTrackingSecondPerson;
 	float rotAcc, gravAcc, fieldMult, drag;
 	ofFloatPixels vectorField;
 
