@@ -16,7 +16,7 @@ static const float c_TrackedBoneThickness = 6.0f;
 static const float c_InferredBoneThickness = 1.0f;
 static const float c_HandSize = 30.0f;
 
-static const float numberOfIterationsToRemoveABody = 1000.0f;
+static const float MAX_NUM_OF_ITERATIONS_TO_REMOVE_A_BODY = 250.0f;
 
 int bodyFreezeIterationToRemoveCount[6] = { 0,0,0,0,0,0 };
 
@@ -255,10 +255,22 @@ void testApp::update() {
 	}
 
 	//Check if a body left the system for a long period of time
-	/*for (int i = 0; i < BODY_COUNT; i++) {
-	if(lastKnownChestPosition)
-		bodyFreezeIterationToRemoveCount[i]++;
-	}*/
+	for (int i = 0; i < BODY_COUNT; i++) {
+		if (lastKnownChestPosition[i] == lastChestPositions[i])
+		{
+			bodyFreezeIterationToRemoveCount[i]++;
+		}
+		else {
+			bodyFreezeIterationToRemoveCount[i] = 0;
+		}
+
+		lastKnownChestPosition[i] = lastChestPositions[i];
+		if (bodyFreezeIterationToRemoveCount[i] >= MAX_NUM_OF_ITERATIONS_TO_REMOVE_A_BODY) {
+			ofLogNotice("Freeze deteceted. should remove body");
+			ofLogNotice(ofToString(i));
+			bodyFreezeIterationToRemoveCount[i] = 0;
+		}
+	}
 }
 
 
