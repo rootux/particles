@@ -160,42 +160,42 @@ void testApp::updateParticleSystem(ofxParticleSystem *ps, ofVec2f gravitationCen
 
 	ps->update(dt, drag);
 
-	if (isLeftEmitterEnabled)
-		ps->addParticles(leftEmitter);
-	if (isRightEmitterEnabled)
-		ps->addParticles(rightEmitter);
-	if (isTopEmitterEnabled)
-		ps->addParticles(topEmitter);
-	if (isBottomEmitterEnabled)
-		ps->addParticles(botEmitter);
+	if (gravitationCenter.x > 0 && gravitationCenter.y > 0) {
+		if (isLeftEmitterEnabled)
+			ps->addParticles(leftEmitter);
+		if (isRightEmitterEnabled)
+			ps->addParticles(rightEmitter);
+		if (isTopEmitterEnabled)
+			ps->addParticles(topEmitter);
+		if (isBottomEmitterEnabled)
+			ps->addParticles(botEmitter);
 
 
+		ofVec2f mouseVelLeft(leftHand.x - pmouseXLeft, leftHand.y - pmouseYLeft);
+		mouseVelLeft *= 20.0;
+		if (leftHandState == HandState_Open) {
+			leftHandEmitter.setPosition(ofVec3f(leftHand.x, leftHand.y), ofVec3f(leftHand.x, leftHand.y));
+			leftHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
+			leftHandEmitter.setVelocity(pmouseVelLeft, mouseVelLeft);
+			ps->addParticles(leftHandEmitter);
+		}
+		pmouseXLeft = leftHand.x;
+		pmouseYLeft = leftHand.y;
+		pmouseVelLeft = mouseVelLeft;
 
 
-	ofVec2f mouseVelLeft(leftHand.x - pmouseXLeft, leftHand.y - pmouseYLeft);
-	mouseVelLeft *= 20.0;
-	if (leftHandState == HandState_Open) {
-		leftHandEmitter.setPosition(ofVec3f(leftHand.x, leftHand.y), ofVec3f(leftHand.x, leftHand.y));
-		leftHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
-		leftHandEmitter.setVelocity(pmouseVelLeft, mouseVelLeft);
-		ps->addParticles(leftHandEmitter);
+		ofVec2f mouseVelRight(rightHand.x - pmouseXRight, rightHand.y - pmouseYRight);
+		mouseVelRight *= 20.0;
+		if (rightHandState == HandState_Open) {
+			rightHandEmitter.setPosition(ofVec3f(rightHand.x, rightHand.y), ofVec3f(rightHand.x, rightHand.y));
+			rightHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
+			rightHandEmitter.setVelocity(pmouseVelRight, mouseVelRight);
+			ps->addParticles(rightHandEmitter);
+		}
+		pmouseXRight = rightHand.x;
+		pmouseYRight = rightHand.y;
+		pmouseVelRight = mouseVelRight;
 	}
-	pmouseXLeft = leftHand.x;
-	pmouseYLeft = leftHand.y;
-	pmouseVelLeft = mouseVelLeft;
-
-
-	ofVec2f mouseVelRight(rightHand.x - pmouseXRight, rightHand.y - pmouseYRight);
-	mouseVelRight *= 20.0;
-	if (rightHandState == HandState_Open) {
-		rightHandEmitter.setPosition(ofVec3f(rightHand.x, rightHand.y), ofVec3f(rightHand.x, rightHand.y));
-		rightHandEmitter.posSpread = ofVec3f(10.0, 10.0, 0.0);
-		rightHandEmitter.setVelocity(pmouseVelRight, mouseVelRight);
-		ps->addParticles(rightHandEmitter);
-	}
-	pmouseXRight = rightHand.x;
-	pmouseYRight = rightHand.y;
-	pmouseVelRight = mouseVelRight;
 }
 
 void testApp::update() {
@@ -266,9 +266,10 @@ void testApp::update() {
 
 		lastKnownChestPosition[i] = lastChestPositions[i];
 		if (bodyFreezeIterationToRemoveCount[i] >= MAX_NUM_OF_ITERATIONS_TO_REMOVE_A_BODY) {
-			ofLogNotice("Freeze deteceted. should remove body");
+			ofLogNotice("Freeze detected. should remove body");
 			ofLogNotice(ofToString(i));
 			bodyFreezeIterationToRemoveCount[i] = 0;
+			lastChestPositions[i].x = lastChestPositions[i].y = 0;
 		}
 	}
 }
