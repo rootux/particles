@@ -265,9 +265,7 @@ void testApp::update() {
 		}
 
 		lastKnownChestPosition[i] = lastChestPositions[i];
-		if (bodyFreezeIterationToRemoveCount[i] >= MAX_NUM_OF_ITERATIONS_TO_REMOVE_A_BODY) {
-			ofLogNotice("Freeze detected. should remove body");
-			ofLogNotice(ofToString(i));
+		if (bodyFreezeIterationToRemoveCount[i] >= MAX_NUM_OF_ITERATIONS_TO_REMOVE_A_BODY ) {
 			bodyFreezeIterationToRemoveCount[i] = 0;
 			lastChestPositions[i].x = lastChestPositions[i].y = 0;
 		}
