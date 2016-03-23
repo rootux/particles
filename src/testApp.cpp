@@ -45,7 +45,7 @@ void testApp::setup() {
 
 
 
-
+	isLeftEmitterEnabled = isRightEmitterEnabled = isTopEmitterEnabled = isBottomEmitterEnabled = true;
 
 	ofSetFrameRate(60.0);
 	ofBackground(0, 0, 0);
@@ -110,6 +110,26 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
+float triangle(float t) {
+	// 1 - abs(2(x - 0.5)
+	return 1 - 2 * abs(t - 0.5);
+}
+
+float gravityAnimate() {
+	const float WAVE_LENGTH = 2.5;
+
+	const float CYCLE_LENGTH = WAVE_LENGTH*6;
+	float wave = sin(ofGetElapsedTimef() *2 *  3.14159 / WAVE_LENGTH);
+	wave = wave / 2 + 0.5;
+	wave = wave*wave;
+	wave = wave * 2 - 1;
+	//float wave = ofNoise(ofGetElapsedTimef())*2 - 1;
+
+
+	float amplitude = triangle(fmod(ofGetElapsedTimef(), CYCLE_LENGTH) / CYCLE_LENGTH);
+	return ofMap(wave * amplitude, -1, 1, 50, 15000);
+}
+
 void testApp::update() {
 
 	kinect.update();
@@ -162,8 +182,10 @@ void testApp::update() {
 		}
 
 	float dt = min(ofGetLastFrameTime(), 1.0 / 10.0);
-	particleSystem.gravitateTo(lastChestPosition, gravAcc, 1, 10.0, false);
-	//particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 10.0, false);
+	particleSystem.attractTo(lastChestPosition, gravAcc, 1, false);
+	particleSystem.gravitateTo(lastChestPosition, gravAcc, 1, 150.0, false);
+	//particleSystem.attractTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, false);
+	//particleSystem.gravitateTo(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), gravAcc, 1, 150.0, false);
 	particleSystem.rotateAround(ofPoint(ofGetWidth() / 2, ofGetHeight() / 2), rotAcc, 10.0, false);
 	particleSystem.applyVectorField(vectorField.getPixels(), vectorField.getWidth(), vectorField.getHeight(), vectorField.getNumChannels(), ofGetWindowRect(), fieldMult);
 	if (leftHandState == HandState_Closed) {
@@ -176,10 +198,14 @@ void testApp::update() {
 
 	particleSystem.update(dt, drag);
 
-	particleSystem.addParticles(leftEmitter);
-	particleSystem.addParticles(rightEmitter);
-	particleSystem.addParticles(topEmitter);
-	particleSystem.addParticles(botEmitter);
+	if(isLeftEmitterEnabled)
+		particleSystem.addParticles(leftEmitter);
+	if(isRightEmitterEnabled)
+		particleSystem.addParticles(rightEmitter);
+	if(isTopEmitterEnabled)
+		particleSystem.addParticles(topEmitter);
+	if(isBottomEmitterEnabled)
+		particleSystem.addParticles(botEmitter);
 
 
 	ofVec2f mouseVelLeft(lastHandPositionLeft.x - pmouseXLeft, lastHandPositionLeft.y - pmouseYLeft);
@@ -221,43 +247,84 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 	HRESULT hr;
 	if (m_pCoordinateMapper)
 	{
+		IBody* pBodyToTrack = NULL;
+		UINT64 trackingId;
 		for (int i = 0; i < nBodyCount; ++i)
 		{
 			IBody* pBody = ppBodies[i];
-			if (pBody)
+			if (lastBodyTrackingId == NULL)
 			{
-				BOOLEAN bTracked = false;
-				hr = pBody->get_IsTracked(&bTracked);
+				//Init a new body tracking
+				if (pBody) {
+					BOOLEAN bTracked = false;
+					hr = pBody->get_IsTracked(&bTracked);
 
-				if (SUCCEEDED(hr) && bTracked)
-				{
-					Joint joints[JointType_Count];
-					ofVec2f jointPoints[JointType_Count];
-					leftHandState = HandState_Unknown;
-					rightHandState = HandState_Unknown;
-
-					pBody->get_HandLeftState(&leftHandState);
-					pBody->get_HandRightState(&rightHandState);
-
-					hr = pBody->GetJoints(_countof(joints), joints);
-					if (SUCCEEDED(hr))
-					{
-						for (int j = 0; j < _countof(joints); ++j)
-						{
-							jointPoints[j] = BodyToScreen(joints[j].Position, 1920, 1080);
+					if (SUCCEEDED(hr) && bTracked) {
+						ofLogNotice("Body is tracked");
+						hr = pBody->get_TrackingId(&lastBodyTrackingId);
+						if (SUCCEEDED(hr)) {
+							ofLogNotice("Found body to track");
+							pBodyToTrack = pBody;
 						}
+						break;
+					}
+				}
+			}
+			else {
+				//Some body is already tracked
+				if (pBody) {
+					BOOLEAN bTracked = false;
+					hr = pBody->get_IsTracked(&bTracked);
 
-						lastChestPosition = jointPoints[JointType_Neck];
-						
-						//DrawBody(joints, jointPoints);
-
-						lastHandPositionLeft = jointPoints[JointType_HandLeft];
-						lastHandPositionRight = jointPoints[JointType_HandRight];
-
+					if (SUCCEEDED(hr) && bTracked) {
+						pBody->get_TrackingId(&trackingId);
+						if (trackingId == lastBodyTrackingId) {
+							pBodyToTrack = pBody;
+						}
 					}
 				}
 			}
 		}
+
+		if (pBodyToTrack == NULL && lastBodyTrackingId != NULL) {
+			ofLogNotice("Lost body. Allowing new body to step in.");
+			lastBodyTrackingId = NULL; //Allow new body to step in
+		}
+			
+		if (pBodyToTrack)
+		{
+			BOOLEAN bTracked = false;
+			hr = pBodyToTrack->get_IsTracked(&bTracked);
+
+			if (SUCCEEDED(hr) && bTracked)
+			{
+				Joint joints[JointType_Count];
+				ofVec2f jointPoints[JointType_Count];
+				leftHandState = HandState_Unknown;
+				rightHandState = HandState_Unknown;
+
+				pBodyToTrack->get_HandLeftState(&leftHandState);
+				pBodyToTrack->get_HandRightState(&rightHandState);
+
+				hr = pBodyToTrack->GetJoints(_countof(joints), joints);
+				if (SUCCEEDED(hr))
+				{
+					for (int j = 0; j < _countof(joints); ++j)
+					{
+						jointPoints[j] = BodyToScreen(joints[j].Position, 1920, 1080);
+					}
+
+					lastChestPosition = jointPoints[JointType_Neck];
+						
+					//DrawBody(joints, jointPoints);
+
+					lastHandPositionLeft = jointPoints[JointType_HandLeft];
+					lastHandPositionRight = jointPoints[JointType_HandRight];
+
+				}
+			}
+		}
+		
 
 		//hr = m_pRenderTarget->EndDraw();
 
@@ -433,10 +500,10 @@ void testApp::draw() {
 	ofNoFill();
 	ofSetCircleResolution(180);
 	ofSetColor(255, 102, 159, 255);
-	ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(gravAcc));
+	//ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(gravAcc));
 	ofSetColor(0, 0, 180, 255);
 
-	ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(rotAcc));
+	//ofCircle(ofGetWidth() / 2, ofGetHeight() / 2, sqrt(rotAcc));
 
 	ofSetLineWidth(2.0);
 	if (displayMode == 1) {
@@ -452,7 +519,7 @@ void testApp::draw() {
 	ofSetLineWidth(8.0);
 	ofSetColor(101, 66, 138, 255);
 	if (lastChestPosition.x > 0 && lastChestPosition.y > 0) {
-		ofCircle(lastChestPosition.x, lastChestPosition.y, 60);
+		//ofCircle(lastChestPosition.x, lastChestPosition.y, 60);
 	}
 
 	//Update rotation accelerator by hand distance
@@ -465,7 +532,8 @@ void testApp::draw() {
 		if (gravAcc > 1.1)
 			gravAcc /= 1.03;
 	}
-	
+	// TODO: make this work with everything else too
+	gravAcc = gravityAnimate();
 
 	ofSetLineWidth(2.0);
 
@@ -526,6 +594,18 @@ void testApp::keyPressed(int key) {
 		break;
 	case '3':
 		displayMode = 2;
+		break;
+	case OF_KEY_LEFT:
+		isLeftEmitterEnabled = !isLeftEmitterEnabled;
+		break;
+	case OF_KEY_RIGHT:
+		isRightEmitterEnabled = !isRightEmitterEnabled;
+		break;
+	case OF_KEY_UP:
+		isTopEmitterEnabled = !isTopEmitterEnabled;
+		break;
+	case OF_KEY_DOWN:
+		isBottomEmitterEnabled = !isBottomEmitterEnabled;
 		break;
 	default:
 		break;

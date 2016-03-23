@@ -34,6 +34,7 @@ public:
 	ofVec2f		lastChestPosition;
 	HandState   leftHandState;
 	HandState   rightHandState;
+	UINT64		lastBodyTrackingId = NULL;
 
 	void keyPressed(int key);
 	void keyReleased(int key);
@@ -51,6 +52,7 @@ public:
 	ofVec2f pmouseVelLeft, pmouseVelRight;
 
 	ofxParticleEmitter leftHandEmitter, rightHandEmitter, topEmitter, botEmitter, leftEmitter, rightEmitter;
+	bool isLeftEmitterEnabled, isRightEmitterEnabled, isTopEmitterEnabled, isBottomEmitterEnabled;
 	float rotAcc, gravAcc, fieldMult, drag;
 	ofFloatPixels vectorField;
 
