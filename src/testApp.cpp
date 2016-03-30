@@ -24,6 +24,9 @@ int bodyFreezeIterationToRemoveCount[6] = { 0,0,0,0,0,0 };
 void testApp::setup() {
 	HRESULT hr;
 
+	
+	shader.load("shaders/bodyIndex");
+
 	kinect.open();
 	kinect.initDepthSource();
 	kinect.initColorSource();
@@ -536,6 +539,32 @@ void testApp::draw() {
 		ofPopMatrix();
 	}
 
+
+
+	cam.begin();
+	ofPushMatrix();
+	ofScale(300, 300, 300);
+	shader.begin();
+	shader.setUniform1i("uWidth", kinect.getBodyIndexSource()->getWidth());
+	//shader.setUniformTexture("uBodyIndexTex", kinect.getBodyIndexSource()->getTexture(), 1);
+	shader.setUniform1i("uBodyIndexTex", 1);
+	kinect.getBodyIndexSource()->getTexture().bind(1);
+	//shader.setUniformTexture("uColorTex", kinect.getColorSource()->getTexture(), 2);
+	shader.setUniform1i("uColorTex", 2);
+	kinect.getColorSource()->getTexture().bind(2);
+	
+	ofSetColor(255);
+	ofMesh mesh = kinect.getDepthSource()->getMesh(false, ofxKFW2::Source::Depth::PointCloudOptions::ColorCamera);
+	mesh.draw();
+
+	kinect.getColorSource()->getTexture().unbind(2);
+	kinect.getBodyIndexSource()->getTexture().unbind(1);
+	shader.end();
+
+	ofPopMatrix();
+	cam.end();
+
+
 	ofNoFill();
 	ofSetCircleResolution(180);
 	ofSetColor(255, 102, 159, 255);
@@ -645,6 +674,7 @@ void testApp::keyPressed(int key) {
 	case OF_KEY_DOWN:
 		isBottomEmitterEnabled = !isBottomEmitterEnabled;
 		break;
+	
 	default:
 		break;
 	}

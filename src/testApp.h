@@ -65,4 +65,7 @@ public:
 
 	ofTexture pTex, p1Tex, p2Tex;
 	int displayMode;
+
+	ofEasyCam cam;
+	ofShader shader;
 };
