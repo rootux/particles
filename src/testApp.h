@@ -17,7 +17,7 @@ public:
 	ofVec2f testApp::BodyToScreen(const CameraSpacePoint& bodyPoint, int width, int height);
 	void testApp::DrawBody(const Joint* pJoints, const ofVec2f* pJointPoints);
 	void testApp::DrawBone(const Joint* pJoints, const ofVec2f* pJointPoints, JointType joint0, JointType joint1);
-	void testApp::updateParticleSystem(ofxParticleSystem* ps, ofVec2f gravitationCenter, ofVec2f leftHand, ofVec2f rightHand);
+	void testApp::updateParticleSystem(ofxParticleSystem* ps, ofVec2f gravitationCenter, ofVec2f leftHand, ofVec2f rightHand, HandState leftHandState, HandState rightHandState);
 
 	ofxKFW2::Device		kinect;
 	IBodyFrameReader*       m_pBodyFrameReader;
@@ -36,8 +36,8 @@ public:
 
 	ofVec2f		lastKnownChestPosition[BODY_COUNT] = {};
 
-	HandState   leftHandState;
-	HandState   rightHandState;
+	HandState   leftHandStates[BODY_COUNT] = {};
+	HandState   rightHandStates[BODY_COUNT] = {};
 	UINT64		lastBodyTrackingIds[BODY_COUNT] = { NULL,NULL,NULL,NULL,NULL,NULL };
 
 	void keyPressed(int key);

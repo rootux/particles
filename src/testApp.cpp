@@ -144,7 +144,7 @@ float gravityAnimate() {
 	return ofMap(wave * amplitude, -1, 1, 50, 15000);
 }
 
-void testApp::updateParticleSystem(ofxParticleSystem *ps, ofVec2f gravitationCenter, ofVec2f leftHand, ofVec2f rightHand) {
+void testApp::updateParticleSystem(ofxParticleSystem *ps, ofVec2f gravitationCenter, ofVec2f leftHand, ofVec2f rightHand, HandState leftHandState, HandState rightHandState) {
 	float dt = min(ofGetLastFrameTime(), 1.0 / 10.0);
 	ps->attractTo(gravitationCenter, gravAcc, 1, false);
 	ps->gravitateTo(gravitationCenter, gravAcc, 1, 150.0, false);
@@ -254,7 +254,7 @@ void testApp::update() {
 
 
 	for (int i = 0; i < BODY_COUNT; i++) {
-		updateParticleSystem(&particleSystems[i], lastChestPositions[i], lastHandPositionLeft[i], lastHandPositionRight[i]);
+		updateParticleSystem(&particleSystems[i], lastChestPositions[i], lastHandPositionLeft[i], lastHandPositionRight[i], leftHandStates[i], rightHandStates[i]);
 	}
 
 	//Check if a body left the system for a long period of time
@@ -348,11 +348,11 @@ void testApp::ProcessBody(INT64 nTime, int nBodyCount, IBody** ppBodies)
 				{
 					Joint joints[JointType_Count];
 					ofVec2f jointPoints[JointType_Count];
-					leftHandState = HandState_Unknown;
-					rightHandState = HandState_Unknown;
+					leftHandStates[i] = HandState_Unknown;
+					rightHandStates[i] = HandState_Unknown;
 
-					pBodyToTrack->get_HandLeftState(&leftHandState);
-					pBodyToTrack->get_HandRightState(&rightHandState);
+					pBodyToTrack->get_HandLeftState(&leftHandStates[i]);
+					pBodyToTrack->get_HandRightState(&rightHandStates[i]);
 
 					hr = pBodyToTrack->GetJoints(_countof(joints), joints);
 					if (SUCCEEDED(hr))
